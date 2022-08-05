@@ -12,10 +12,11 @@ const Header = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static"
-       style={{ background: 'rgb(17 93 86 / 95%)' }}
+        color="primary"
+        className={styles.appBar}
       >
         <Toolbar variant="dense"
-        color="secondary">
+          color="secondary">
           <Typography
             variant="h6"
             color="inherit"

@@ -1,7 +1,9 @@
 import React from 'react';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 import styles from './Home.module.css';
+import TextField from '@mui/material/TextField';
+import { MenuItem, Select } from '@mui/material';
+
 
 const Home = () => {
   console.log(styles);
@@ -17,6 +19,8 @@ const Home = () => {
       >
         Библиотека
       </Typography>
+
+
       <Typography
         className={styles.name}
         variant="h6"
@@ -27,8 +31,37 @@ const Home = () => {
         Название поля
       </Typography>
       <div className={styles.field}>
-        <TextField id="outlined-basic"
-          label="Outlined" size="small" variant="outlined" multiline />
+
+        <TextField
+          className={styles.textField}
+          id="outlined-basic"
+          label="Outlined"
+          size="small"
+          variant="outlined"
+          multiline />
+
+        <Typography
+          className={styles.name2}
+          variant="h6"
+          color="inherit"
+          component="div"
+          sx={{ flexGrow: 2 }}
+        >
+          Название поля
+        </Typography>
+        <Select
+
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={10}
+          size="small"
+          onChange={() => { }}
+        >
+
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
       </div>
     </div >
   );
