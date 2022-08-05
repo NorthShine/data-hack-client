@@ -7,9 +7,9 @@ const Home = () => {
   console.log(styles);
 
   return (
-    <div className={styles.Main__wrapper}>
+    <div className={styles.home}>
       <Typography
-        className="Main_title"
+        className={styles.title}
         variant="h6"
         color="inherit"
         component="div"
@@ -18,7 +18,7 @@ const Home = () => {
         Библиотека
       </Typography>
       <Typography
-        className="input__name"
+        className={styles.name}
         variant="h6"
         color="inherit"
         component="div"
@@ -26,12 +26,11 @@ const Home = () => {
       >
         Название поля
       </Typography>
-      <div className="input__field">
-        <div className="input-text">
-          <TextField id="outlined-basic" label="Outlined" size="small" variant="outlined" multiline />
-        </div>
+      <div className={styles.field}>
+        <TextField id="outlined-basic"
+          label="Outlined" size="small" variant="outlined" multiline />
       </div>
-    </div>
+    </div >
   );
 }
 

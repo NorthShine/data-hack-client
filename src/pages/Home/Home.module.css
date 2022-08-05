@@ -1,18 +1,18 @@
-.Main__wrapper {
+.home {
   width: auto;
 }
 
-.Main_title {
+.title {
   text-align: center;
   padding-top: 10px;
   font-size: 1.5rem;
 }
 
-.input__field {
+.field {
   padding-left: 30px;
 }
 
-.input__name {
+.name {
   margin-left: 30px;
   padding-bottom: 10px;
   font-size: 0.9rem;
