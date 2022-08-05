@@ -1,11 +1,13 @@
 import React from 'react';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import Styles from './Home.modules.css';
+import styles from './Home.module.css';
 
-function Home() {
+const Home = () => {
+  console.log(styles);
+
   return (
-    <div className="Main__wrapper">
+    <div className={styles.Main__wrapper}>
       <Typography
         className="Main_title"
         variant="h6"
