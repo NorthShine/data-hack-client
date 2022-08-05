@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Typography from '@mui/material/Typography';
-import styles from './Home.module.css';
 import TextField from '@mui/material/TextField';
 import { MenuItem, Select } from '@mui/material';
-
+import styles from './Home.module.css';
+import { StateContext } from '../../providers/StateProvider';
 
 const Home = () => {
-  console.log(styles);
+  const context = useContext(StateContext);
+
+  const handleClick = () => {
+    context.setState({
+      type: 'increment'
+    });
+  };
 
   return (
     <div className={styles.home}>
+      <div>{context.state.count}</div>
+      <button
+        type="button"
+        onClick={handleClick}
+      >
+        button
+      </button>
       <Typography
         className={styles.title}
         variant="h6"
@@ -19,7 +32,6 @@ const Home = () => {
       >
         Библиотека
       </Typography>
-
 
       <Typography
         className={styles.name}
@@ -38,7 +50,8 @@ const Home = () => {
           label="Outlined"
           size="small"
           variant="outlined"
-          multiline />
+          multiline
+        />
 
         <Typography
           className={styles.name2}
@@ -50,7 +63,6 @@ const Home = () => {
           Название поля
         </Typography>
         <Select
-
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={10}
@@ -63,8 +75,8 @@ const Home = () => {
           <MenuItem value={30}>Thirty</MenuItem>
         </Select>
       </div>
-    </div >
+    </div>
   );
-}
+};
 
 export default Home;
