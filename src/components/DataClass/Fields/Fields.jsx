@@ -35,7 +35,7 @@ const Fields = (props) => {
       >
         Fields
       </Typography>
-      <div className={styles.gridWrapper}>
+      <div className={styles.setInput}>
         <Typography
           className={styles.name}
           variant="h6"
@@ -52,7 +52,7 @@ const Fields = (props) => {
           component="div"
           sx={{ flexGrow: 2 }}
         >
-          Название поля
+          Тип
         </Typography>
       </div>
       {items.map((item) => (

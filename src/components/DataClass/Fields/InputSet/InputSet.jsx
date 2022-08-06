@@ -31,35 +31,35 @@ const InputSet = (props) => {
   }, [dataClassId, item.id]);
 
   return (
-        <div className={styles.gridWrapper}>{/* eslint-disable-line */}
-          <TextField
-            className={styles.textField}
-            value={item.name}
-            id={id + item.id}
-            size="small"
-            variant="outlined"
-            onChange={handleInputChange}
-            multiline
-            fullWidth
-          />
-          <Select
-            labelId={`${id + item.id}-label`}
-            id={id + item.id}
-            value={item.type}
-            size="small"
-            onChange={handleSelectChange}
-            fullWidth
+    <div className={styles.gridWrapper}>{/* eslint-disable-line */}
+      <TextField
+        className={styles.textField}
+        value={item.name}
+        id={id + item.id}
+        size="small"
+        variant="outlined"
+        onChange={handleInputChange}
+        multiline
+        fullWidth
+      />
+      <Select
+        labelId={`${id + item.id}-label`}
+        id={id + item.id}
+        value={item.type}
+        size="small"
+        onChange={handleSelectChange}
+        fullWidth
+      >
+        {DATA_TYPES.map((type) => (
+          <MenuItem
+            key={type}
+            value={type}
           >
-            {DATA_TYPES.map((type) => (
-              <MenuItem
-                key={type}
-                value={type}
-              >
-                {type}
-              </MenuItem>
-            ))}
-          </Select>
-        </div>
+            {type}
+          </MenuItem>
+        ))}
+      </Select>
+    </div>
   );
 };
 
