@@ -4,6 +4,8 @@ const Api = axios.create({
   baseURL: import.meta.env.VITE_API_URL
 });
 
-// auth
+const createDataClass = (data) => Api.post('/', data);
 
-export default Api;
+export default {
+  createDataClass
+};

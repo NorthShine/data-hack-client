@@ -8,7 +8,8 @@ import { theme } from './theme';
 import Routes from './routes';
 import StateProvider from './providers/StateProvider';
 import store from './store';
-import { AlertProvider } from './providers/AlertProvider';
+import LoaderProvider from './providers/LoaderProvider';
+import AlertProvider from './providers/AlertProvider';
 
 const cache = createCache({
   key: 'css',
@@ -20,11 +21,13 @@ const App = () => (
     <ThemeProvider theme={theme}>
       <StateProvider store={store}>
         <AlertProvider>
-          <StyledEngineProvider injectFirst>
-            <Router>
-              <Routes />
-            </Router>
-          </StyledEngineProvider>
+          <LoaderProvider>
+            <StyledEngineProvider injectFirst>
+              <Router>
+                <Routes />
+              </Router>
+            </StyledEngineProvider>
+          </LoaderProvider>
         </AlertProvider>
       </StateProvider>
     </ThemeProvider>
