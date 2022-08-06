@@ -1,13 +1,12 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { alertReducer } from './reducers/alert/alertReducer';
+import { combineUnits } from '../utils';
+import alertUnit from './units/alert';
+import configUnit from './units/config';
+import loaderUnit from './units/loader';
 
-const rootReducer = combineReducers({
-  alert: alertReducer
+const store = combineUnits({
+  alert: alertUnit,
+  config: configUnit,
+  loader: loaderUnit
 });
 
-export const setupStore = () => configureStore({
-  reducer: rootReducer,
-  devTools: process.env.NODE_ENV !== 'production'
-});
-
-export const store = setupStore();
+export default store;

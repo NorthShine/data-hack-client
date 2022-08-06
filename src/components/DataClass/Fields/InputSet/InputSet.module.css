@@ -1,0 +1,16 @@
+.name {
+  padding-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.name2 {
+  padding-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.gridWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2vw;
+  padding-bottom: 20px;
+}

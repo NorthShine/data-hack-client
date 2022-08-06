@@ -1,0 +1,21 @@
+.name {
+  padding-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+.setInput {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2vw;
+  padding-bottom: 5px;
+}
+
+.fieldsPlace {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
