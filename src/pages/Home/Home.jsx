@@ -4,6 +4,7 @@ import { Button } from '@mui/material';
 import styles from './Home.module.css';
 import Fields from '../../components/Fields/Fields';
 import { useAlert } from '../../hooks/useAlert';
+import ForeignKeys from '../../components/ForeignKeys/ForeignKeys'
 
 const Home = () => {
   const alert = useAlert();
@@ -24,6 +25,7 @@ const Home = () => {
         Библиотека
       </Typography>
       <Fields />
+      <ForeignKeys />
       <Button onClick={handleClick}>Открыть алерт</Button>
     </div>
   );

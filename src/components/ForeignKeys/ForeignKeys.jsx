@@ -2,9 +2,9 @@ import React from 'react';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { MenuItem, Select } from '@mui/material';
-import styles from './Fields.module.css';
+import styles from './ForeignKeys.module.css';
 
-const Fields = () => (
+const ForeignKeys = () => (
   <div className={styles.fields}>
     <Typography
       className={styles.fieldsPlace}
@@ -13,7 +13,7 @@ const Fields = () => (
       component="div"
       sx={{ flexGrow: 2 }}
     >
-      Fields
+      ForeignKeys
     </Typography>
     <div className={styles.gridWrapper}>
       <Typography
@@ -107,4 +107,4 @@ const Fields = () => (
   </div>
 );
 
-export default Fields;
+export default ForeignKeys;
