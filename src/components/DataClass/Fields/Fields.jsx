@@ -33,7 +33,7 @@ const Fields = (props) => {
         component="div"
         sx={{ flexGrow: 2 }}
       >
-        Fields
+        Поля (Fields)
       </Typography>
       <div className={styles.setInput}>
         <Typography
@@ -46,7 +46,7 @@ const Fields = (props) => {
           Название поля
         </Typography>
         <Typography
-          className={styles.name2}
+          className={styles.name}
           variant="h6"
           color="inherit"
           component="div"

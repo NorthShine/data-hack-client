@@ -1,28 +1,71 @@
-import { Container } from '@mui/system';
-import React, { useMemo } from 'react';
+import { Container, TextField, Typography } from '@mui/material';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'proptypes';
-import { TextField } from '@mui/material';
 import Fields from './Fields/Fields';
 import useSelector from '../../hooks/useSelector';
+import useDispatch from '../../hooks/useDispatch';
+import { setDataClassName, setWhereClauses } from '../../store/units/config/actions';
+import styles from './DataClass.module.css';
 
 const DataClass = (props) => {
   const { id } = props;
   const data = useSelector((state) => state.config.data);
+  const dispatch = useDispatch();
 
   const dataClass = useMemo(
     () => data.find((item) => item.id === id),
     [data, id]
   );
 
+  const handleDataClassNameChange = useCallback((event) => {
+    const { value } = event.target;
+    dispatch(setDataClassName({
+      dataClassId: id,
+      value
+    }));
+  }, [id]);
+
+  const handleWhereClausesChange = useCallback((event) => {
+    const { value } = event.target;
+    dispatch(setWhereClauses({
+      dataClassId: id,
+      value
+    }));
+  }, [id]);
+
   return (
-    <Container>
-      <TextField
-        size="small"
-      />
+    <Container className={styles.dataClass}>
+      <div className={styles.container}>
+        <Typography
+          className={styles.title}
+          variant="h6"
+        >
+          Имя таблицы
+        </Typography>
+        <TextField
+          size="small"
+          value={dataClass.name}
+          onChange={handleDataClassNameChange}
+        />
+      </div>
       <Fields
         items={dataClass.sqlModel.fields}
         dataClassId={id}
       />
+      <div className={styles.container}>
+        <Typography
+          className={styles.title}
+          variant="h6"
+        >
+          where_clauses
+        </Typography>
+        <TextField
+          size="small"
+          placeholder="my_field > 10 & another_field <= 80"
+          value={dataClass.whereClauses}
+          onChange={handleWhereClausesChange}
+        />
+      </div>
     </Container>
   );
 };

@@ -5,8 +5,10 @@ import {
   ADD_INPUT_SET,
   REMOVE_DATA_CLASS,
   REMOVE_INPUT_SET,
+  SET_DATA_CLASS_NAME,
   SET_FIELD_NAME,
-  SET_FIELD_TYPE
+  SET_FIELD_TYPE,
+  SET_WHERE_CLAUSES
 } from './actionTypes';
 
 const configUnit = {
@@ -132,6 +134,41 @@ const configUnit = {
           })
         };
       }
+
+      case SET_DATA_CLASS_NAME: {
+        const { dataClassId, value } = action.payload;
+
+        return {
+          ...state,
+          data: state.data.map((dataClass) => {
+            if (dataClass.id === dataClassId) {
+              return {
+                ...dataClass,
+                name: value
+              };
+            }
+            return dataClass;
+          })
+        };
+      }
+
+      case SET_WHERE_CLAUSES: {
+        const { dataClassId, value } = action.payload;
+
+        return {
+          ...state,
+          data: state.data.map((dataClass) => {
+            if (dataClass.id === dataClassId) {
+              return {
+                ...dataClass,
+                whereClauses: value
+              };
+            }
+            return dataClass;
+          })
+        };
+      }
+
       default:
         return state;
     }
