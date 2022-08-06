@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import { MenuItem, Select } from '@mui/material';
 import styles from './Home.module.css';
 import { StateContext } from '../../providers/StateProvider';
+import Fields from '../../components/Alert/Fields/Fields';
 
 const Home = () => {
   const context = useContext(StateContext);
@@ -16,13 +17,6 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
-      <div>{context.state.count}</div>
-      <button
-        type="button"
-        onClick={handleClick}
-      >
-        button
-      </button>
       <Typography
         className={styles.title}
         variant="h6"
@@ -32,61 +26,7 @@ const Home = () => {
       >
         Библиотека
       </Typography>
-
-      <div className={styles.gridWrapper}>
-        <div><Typography
-          className={styles.name}
-          variant="h6"
-          color="inherit"
-          component="div"
-          sx={{ flexGrow: 2 }}
-        >
-          Название поля
-        </Typography>
-        </div>
-        <div>
-          <Typography
-            className={styles.name2}
-            variant="h6"
-            color="inherit"
-            component="div"
-            sx={{ flexGrow: 2 }}
-          >
-            Название поля
-          </Typography>
-        </div>
-
-      </div>
-
-
-
-      <div className={styles.gridWrapper}>
-        <div>
-          <TextField
-            className={styles.textField}
-            id="outlined-basic"
-            label="Outlined"
-            size="small"
-            variant="outlined"
-            multiline
-          />
-
-        </div>
-        <div className={styles.select}>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={10}
-            size="small"
-            onChange={() => { }}
-          >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </div>
-
-      </div>
+      <Fields />
 
     </div>
   );

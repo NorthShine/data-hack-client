@@ -1,0 +1,34 @@
+.fields {
+  max-width: 600px;
+  padding: 30px;
+}
+
+.title {
+  text-align: center;
+  padding-top: 10px;
+  font-size: 1.5rem;
+}
+
+
+.name {
+  padding-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.name2 {
+  padding-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.textField {
+  position: relative;
+
+}
+
+.gridWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2vw;
+}
+
+.gridWrapper>div {}
