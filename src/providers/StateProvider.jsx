@@ -6,22 +6,10 @@ export const StateContext = createContext({
   setState: () => {}
 });
 
-const initialState = { count: 0 };
-
-function reducer(state, action) {
-  switch (action.type) {
-    case 'increment':
-      return { count: state.count + 1 };
-    case 'decrement':
-      return { count: state.count - 1 };
-    default:
-      throw new Error();
-  }
-}
-
 const StateProvider = (props) => {
+  const { children, store } = props;
+  const { reducer, initialState } = store;
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { children } = props;
 
   const setState = useCallback(
     ({ type, payload }) => dispatch({ type, payload }),
@@ -41,7 +29,11 @@ const StateProvider = (props) => {
 };
 
 StateProvider.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  store: PropTypes.shape({
+    initialState: PropTypes.shape(),
+    reducer: PropTypes.func
+  })
 };
 
 export default StateProvider;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'proptypes';
-import Alert from 'components/Alert/Alert';
+import Alert from '../components/Alert/Alert';
 
 export const AlertProvider = ({ children }) => (
   <>
@@ -10,5 +10,5 @@ export const AlertProvider = ({ children }) => (
 );
 
 AlertProvider.propTypes = {
-  children: PropTypes.children
+  children: PropTypes.node.isRequired
 };

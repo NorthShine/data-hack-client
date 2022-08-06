@@ -3,4 +3,4 @@ export const DEFAULT_ALERT_POSITION = {
   horizontal: 'center'
 };
 
-export const DEFAULT_ALERT_TIMEOUT = 300;
+export const DEFAULT_ALERT_TIMEOUT = 3000;

@@ -7,6 +7,8 @@ import { CacheProvider } from '@emotion/react';
 import { theme } from './theme';
 import Routes from './routes';
 import StateProvider from './providers/StateProvider';
+import store from './store';
+import { AlertProvider } from './providers/AlertProvider';
 
 const cache = createCache({
   key: 'css',
@@ -16,12 +18,14 @@ const cache = createCache({
 const App = () => (
   <CacheProvider value={cache}>
     <ThemeProvider theme={theme}>
-      <StateProvider>
-        <StyledEngineProvider injectFirst>
-          <Router>
-            <Routes />
-          </Router>
-        </StyledEngineProvider>
+      <StateProvider store={store}>
+        <AlertProvider>
+          <StyledEngineProvider injectFirst>
+            <Router>
+              <Routes />
+            </Router>
+          </StyledEngineProvider>
+        </AlertProvider>
       </StateProvider>
     </ThemeProvider>
   </CacheProvider>
