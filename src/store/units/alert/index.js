@@ -20,7 +20,7 @@ const alertUnit = {
           open: false
         };
       default:
-        throw new Error();
+        return state;
     }
   }
 };

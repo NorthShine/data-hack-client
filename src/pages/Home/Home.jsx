@@ -1,17 +1,11 @@
 import React from 'react';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
 import styles from './Home.module.css';
-import Fields from '../../components/Fields/Fields';
-import { useAlert } from '../../hooks/useAlert';
-import ForeignKeys from '../../components/ForeignKeys/ForeignKeys'
+import useSelector from '../../hooks/useSelector';
+import DataClass from '../../components/DataClass/DataClass';
 
 const Home = () => {
-  const alert = useAlert();
-
-  const handleClick = () => {
-    alert.success('Works!');
-  };
+  const dataClasses = useSelector((state) => state.config.data);
 
   return (
     <div className={styles.home}>
@@ -24,9 +18,9 @@ const Home = () => {
       >
         Библиотека
       </Typography>
-      <Fields />
-      <ForeignKeys />
-      <Button onClick={handleClick}>Открыть алерт</Button>
+      {dataClasses.map((item) => (
+        <DataClass key={item.id} id={item.id} />
+      ))}
     </div>
   );
 };

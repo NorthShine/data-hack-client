@@ -1,0 +1,4 @@
+export const ADD_DATA_CLASS = 'ADD_DATA_CLASS';
+export const REMOVE_DATA_CLASS = 'REMOVE_DATA_CLASS';
+export const SET_FIELD_NAME = 'SET_FIELD_NAME';
+export const SET_FIELD_TYPE = 'SET_FIELD_TYPE';

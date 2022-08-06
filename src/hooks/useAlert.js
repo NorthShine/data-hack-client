@@ -1,4 +1,4 @@
-import { openAlert, closeAlert as closeAlertAction } from '../store/units/actions';
+import { openAlert, closeAlert as closeAlertAction } from '../store/units/alert/actions';
 import useDispatch from './useDispatch';
 import useSelector from './useSelector';
 
