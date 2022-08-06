@@ -33,28 +33,9 @@ const Home = () => {
         Библиотека
       </Typography>
 
-      <Typography
-        className={styles.name}
-        variant="h6"
-        color="inherit"
-        component="div"
-        sx={{ flexGrow: 2 }}
-      >
-        Название поля
-      </Typography>
-      <div className={styles.field}>
-
-        <TextField
-          className={styles.textField}
-          id="outlined-basic"
-          label="Outlined"
-          size="small"
-          variant="outlined"
-          multiline
-        />
-
-        <Typography
-          className={styles.name2}
+      <div className={styles.gridWrapper}>
+        <div><Typography
+          className={styles.name}
           variant="h6"
           color="inherit"
           component="div"
@@ -62,19 +43,51 @@ const Home = () => {
         >
           Название поля
         </Typography>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={10}
-          size="small"
-          onChange={() => { }}
-        >
+        </div>
+        <div>
+          <Typography
+            className={styles.name2}
+            variant="h6"
+            color="inherit"
+            component="div"
+            sx={{ flexGrow: 2 }}
+          >
+            Название поля
+          </Typography>
+        </div>
 
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
       </div>
+
+
+
+      <div className={styles.gridWrapper}>
+        <div>
+          <TextField
+            className={styles.textField}
+            id="outlined-basic"
+            label="Outlined"
+            size="small"
+            variant="outlined"
+            multiline
+          />
+
+        </div>
+        <div className={styles.select}>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={10}
+            size="small"
+            onChange={() => { }}
+          >
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+        </div>
+
+      </div>
+
     </div>
   );
 };
