@@ -31,3 +31,8 @@
   font-size: 1rem;
   margin-bottom: 10px;
 }
+
+.actions {
+  display: flex;
+  gap: 10px;
+}

@@ -7,3 +7,11 @@ export const createDataClass = () => ({
   ...DEFAULT_DATA_CLASS,
   id: uuid()
 });
+
+export const createField = () => (
+  {
+    name: '',
+    type: 'int',
+    id: uuid()
+  }
+);

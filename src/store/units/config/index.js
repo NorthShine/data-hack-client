@@ -1,6 +1,13 @@
 import { DEFAULT_DATA_CLASS } from '../../../constants';
-import { createDataClass } from '../../../utils';
-import { ADD_DATA_CLASS, REMOVE_DATA_CLASS, SET_FIELD_NAME, SET_FIELD_TYPE } from './actionTypes';
+import { createDataClass, createField } from '../../../utils';
+import {
+  ADD_DATA_CLASS,
+  ADD_INPUT_SET,
+  REMOVE_DATA_CLASS,
+  REMOVE_INPUT_SET,
+  SET_FIELD_NAME,
+  SET_FIELD_TYPE
+} from './actionTypes';
 
 const configUnit = {
   initialState: {
@@ -70,6 +77,49 @@ const configUnit = {
                 }
                 return field;
               });
+              return {
+                ...dataClass,
+                sqlModel: {
+                  ...dataClass.sqlModel,
+                  fields
+                }
+              };
+            }
+            return dataClass;
+          })
+        };
+      }
+
+      case ADD_INPUT_SET: {
+        const { dataClassId } = action.payload;
+
+        return {
+          ...state,
+          data: state.data.map((dataClass) => {
+            if (dataClass.id === dataClassId) {
+              const fields = [...dataClass.sqlModel.fields, createField()];
+              return {
+                ...dataClass,
+                sqlModel: {
+                  ...dataClass.sqlModel,
+                  fields
+                }
+              };
+            }
+            return dataClass;
+          })
+        };
+      }
+
+      case REMOVE_INPUT_SET: {
+        const { dataClassId } = action.payload;
+
+        return {
+          ...state,
+          data: state.data.map((dataClass) => {
+            if (dataClass.id === dataClassId) {
+              const fields = [...dataClass.sqlModel.fields];
+              fields.pop();
               return {
                 ...dataClass,
                 sqlModel: {
