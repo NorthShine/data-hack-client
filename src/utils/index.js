@@ -1,12 +1,6 @@
 import { v4 as uuid } from 'uuid';
-import { DEFAULT_DATA_CLASS } from '../constants';
 
 export * from './store';
-
-export const createDataClass = () => ({
-  ...DEFAULT_DATA_CLASS,
-  id: uuid()
-});
 
 export const createField = () => (
   {
@@ -15,6 +9,22 @@ export const createField = () => (
     id: uuid()
   }
 );
+
+export const DEFAULT_DATA_CLASS = {
+  name: 'MyDataclass',
+  sqlModel:
+  {
+    fields: [createField()],
+    foreignKeys: [],
+    m2mFields: [],
+    whereClauses: '' // my_field > 10 & another_field <= 80
+  }
+};
+
+export const createDataClass = () => ({
+  ...DEFAULT_DATA_CLASS,
+  id: uuid()
+});
 
 export const downloadFile = (data, fileName = 'data') => {
   const json = JSON.stringify(data, null, 2);

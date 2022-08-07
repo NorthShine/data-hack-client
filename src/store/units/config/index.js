@@ -1,4 +1,3 @@
-import { DEFAULT_DATA_CLASS } from '../../../constants';
 import { createDataClass, createField } from '../../../utils';
 import {
   ADD_DATA_CLASS,
@@ -13,21 +12,21 @@ import {
 
 const configUnit = {
   initialState: {
-    data: [createDataClass()]
+    models: [createDataClass()]
   },
   reducer: (state, action) => {
     switch (action.type) {
       case ADD_DATA_CLASS:
         return {
           ...state,
-          data: [
+          models: [
             ...state.data,
-            DEFAULT_DATA_CLASS
+            createDataClass()
           ]
         };
       case REMOVE_DATA_CLASS: {
         const { id } = action.payload;
-        const data = state.data.filter((item) => item.id !== id);
+        const data = state.models.filter((item) => item.id !== id);
 
         return {
           ...state,
@@ -39,7 +38,7 @@ const configUnit = {
 
         return {
           ...state,
-          data: state.data.map((dataClass) => {
+          models: state.models.map((dataClass) => {
             if (dataClass.id === dataClassId) {
               const fields = dataClass.sqlModel.fields.map((field) => {
                 if (field.id === fieldId) {
@@ -68,7 +67,7 @@ const configUnit = {
 
         return {
           ...state,
-          data: state.data.map((dataClass) => {
+          models: state.models.map((dataClass) => {
             if (dataClass.id === dataClassId) {
               const fields = dataClass.sqlModel.fields.map((field) => {
                 if (field.id === fieldId) {
@@ -97,7 +96,7 @@ const configUnit = {
 
         return {
           ...state,
-          data: state.data.map((dataClass) => {
+          models: state.models.map((dataClass) => {
             if (dataClass.id === dataClassId) {
               const fields = [...dataClass.sqlModel.fields, createField()];
               return {
@@ -118,7 +117,7 @@ const configUnit = {
 
         return {
           ...state,
-          data: state.data.map((dataClass) => {
+          models: state.models.map((dataClass) => {
             if (dataClass.id === dataClassId) {
               const fields = [...dataClass.sqlModel.fields];
               fields.pop();
@@ -140,7 +139,7 @@ const configUnit = {
 
         return {
           ...state,
-          data: state.data.map((dataClass) => {
+          models: state.models.map((dataClass) => {
             if (dataClass.id === dataClassId) {
               return {
                 ...dataClass,
@@ -157,7 +156,7 @@ const configUnit = {
 
         return {
           ...state,
-          data: state.data.map((dataClass) => {
+          models: state.models.map((dataClass) => {
             if (dataClass.id === dataClassId) {
               return {
                 ...dataClass,

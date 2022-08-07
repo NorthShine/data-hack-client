@@ -7,3 +7,9 @@
   padding-top: 30px;
   font-size: 1.5rem;
 }
+
+.actions {
+  padding-top: 20px;
+  display: flex;
+  gap: 10px;
+}
