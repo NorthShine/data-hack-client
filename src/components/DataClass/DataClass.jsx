@@ -1,4 +1,4 @@
-import { Container, TextField, Typography } from '@mui/material';
+import { Container, MenuItem, Select, TextField, Typography } from '@mui/material';
 import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'proptypes';
 import Fields from './Fields/Fields';
@@ -7,6 +7,7 @@ import useDispatch from '../../hooks/useDispatch';
 import { setDataClassName, setLimit, setWhereClauses } from '../../store/units/config/actions';
 import styles from './DataClass.module.css';
 import ForeignKeys from './ForeignKeys/ForeignKeys';
+import { DEFAULT_LANGUAGES } from '../../constants';
 
 const DataClass = (props) => {
   const { id } = props;
@@ -44,6 +45,16 @@ const DataClass = (props) => {
     }
   }, [id]);
 
+  const handleLangSelect = useCallback((event) => {
+    const { value } = event.target;
+    if (Number.isInteger(+value)) {
+      dispatch(setLimit({
+        dataClassId: id,
+        value
+      }));
+    }
+  }, [id]);
+
   return (
     <Container className={styles.dataClass}>
       <div className={styles.container}>
@@ -59,18 +70,46 @@ const DataClass = (props) => {
           onChange={handleDataClassNameChange}
         />
       </div>
-      <div className={styles.container}>
-        <Typography
-          className={styles.title}
-          variant="h6"
-        >
-          Лимит
-        </Typography>
-        <TextField
-          size="small"
-          value={dataClass.limit}
-          onChange={handleLimitChange}
-        />
+      <div className={styles.row}>
+        <div className={styles.container}>
+          <Typography
+            className={styles.title}
+            variant="h6"
+          >
+            Язык
+          </Typography>
+          <Select
+            labelId={`${id}-label`}
+            id={id}
+            value={dataClass.lang}
+            size="small"
+            onChange={handleLangSelect}
+            fullWidth
+          >
+            {DEFAULT_LANGUAGES.map((lang) => (
+              <MenuItem
+                key={lang}
+                value={lang}
+              >
+                {lang}
+              </MenuItem>
+            ))}
+          </Select>
+        </div>
+        <div className={styles.container}>
+          <Typography
+            className={styles.title}
+            variant="h6"
+          >
+            Лимит
+          </Typography>
+          <TextField
+            size="small"
+            value={dataClass.limit}
+            onChange={handleLimitChange}
+            fullWidth
+          />
+        </div>
       </div>
       <Fields
         items={dataClass.sqlModel.fields}

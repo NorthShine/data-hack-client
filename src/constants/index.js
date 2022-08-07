@@ -8,3 +8,7 @@ export const DEFAULT_ALERT_TIMEOUT = 3000;
 export const DATA_TYPES = [
   'int', 'str', 'datetime', 'float', 'bool'
 ];
+
+export const DEFAULT_LANGUAGES = [
+  'en', 'ru'
+];

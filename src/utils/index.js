@@ -21,6 +21,7 @@ export const createForeignKey = (foreignField) => (
 export const DEFAULT_DATA_CLASS = {
   name: 'MyDataclass',
   limit: 10,
+  lang: 'en',
   sqlModel:
   {
     fields: [createField()],

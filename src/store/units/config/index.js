@@ -12,7 +12,8 @@ import {
   SET_FOREIGN_KEY_NAME,
   SET_FOREIGN_KEY_FIELD,
   SET_WHERE_CLAUSES,
-  SET_LIMIT
+  SET_LIMIT,
+  SET_LANGUAGE
 } from './actionTypes';
 
 const configUnit = {
@@ -106,6 +107,22 @@ const configUnit = {
               return {
                 ...dataClass,
                 limit: value
+              };
+            }
+            return dataClass;
+          })
+        };
+      }
+
+      case SET_LANGUAGE: {
+        const { dataClassId, value } = action.payload;
+        return {
+          ...state,
+          models: state.models.map((dataClass) => {
+            if (dataClass.id === dataClassId) {
+              return {
+                ...dataClass,
+                lang: value
               };
             }
             return dataClass;
