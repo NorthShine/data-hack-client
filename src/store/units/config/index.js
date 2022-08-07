@@ -11,7 +11,8 @@ import {
   SET_FIELD_TYPE,
   SET_FOREIGN_KEY_NAME,
   SET_FOREIGN_KEY_FIELD,
-  SET_WHERE_CLAUSES
+  SET_WHERE_CLAUSES,
+  SET_LIMIT
 } from './actionTypes';
 
 const configUnit = {
@@ -89,6 +90,22 @@ const configUnit = {
                   ...dataClass.sqlModel,
                   fields
                 }
+              };
+            }
+            return dataClass;
+          })
+        };
+      }
+
+      case SET_LIMIT: {
+        const { dataClassId, value } = action.payload;
+        return {
+          ...state,
+          models: state.models.map((dataClass) => {
+            if (dataClass.id === dataClassId) {
+              return {
+                ...dataClass,
+                limit: value
               };
             }
             return dataClass;

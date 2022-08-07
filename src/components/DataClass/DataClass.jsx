@@ -4,7 +4,7 @@ import PropTypes from 'proptypes';
 import Fields from './Fields/Fields';
 import useSelector from '../../hooks/useSelector';
 import useDispatch from '../../hooks/useDispatch';
-import { setDataClassName, setWhereClauses } from '../../store/units/config/actions';
+import { setDataClassName, setLimit, setWhereClauses } from '../../store/units/config/actions';
 import styles from './DataClass.module.css';
 import ForeignKeys from './ForeignKeys/ForeignKeys';
 
@@ -34,6 +34,16 @@ const DataClass = (props) => {
     }));
   }, [id]);
 
+  const handleLimitChange = useCallback((event) => {
+    const { value } = event.target;
+    if (Number.isInteger(+value)) {
+      dispatch(setLimit({
+        dataClassId: id,
+        value
+      }));
+    }
+  }, [id]);
+
   return (
     <Container className={styles.dataClass}>
       <div className={styles.container}>
@@ -47,6 +57,19 @@ const DataClass = (props) => {
           size="small"
           value={dataClass.name}
           onChange={handleDataClassNameChange}
+        />
+      </div>
+      <div className={styles.container}>
+        <Typography
+          className={styles.title}
+          variant="h6"
+        >
+          Лимит
+        </Typography>
+        <TextField
+          size="small"
+          value={dataClass.limit}
+          onChange={handleLimitChange}
         />
       </div>
       <Fields

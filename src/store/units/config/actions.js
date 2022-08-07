@@ -1,4 +1,4 @@
-import { ADD_DATA_CLASS, ADD_FOREIGN_KEY, ADD_INPUT_SET, REMOVE_DATA_CLASS, REMOVE_FOREIGN_KEY, REMOVE_INPUT_SET, SET_DATA_CLASS_NAME, SET_FIELD_NAME, SET_FIELD_TYPE, SET_FOREIGN_KEY_NAME, SET_FOREIGN_KEY_FIELD, SET_WHERE_CLAUSES } from './actionTypes';
+import { ADD_DATA_CLASS, ADD_FOREIGN_KEY, ADD_INPUT_SET, REMOVE_DATA_CLASS, REMOVE_FOREIGN_KEY, REMOVE_INPUT_SET, SET_DATA_CLASS_NAME, SET_FIELD_NAME, SET_FIELD_TYPE, SET_FOREIGN_KEY_NAME, SET_FOREIGN_KEY_FIELD, SET_WHERE_CLAUSES, SET_LIMIT } from './actionTypes';
 
 export const addDataClass = (payload) => ({
   type: ADD_DATA_CLASS,
@@ -56,5 +56,10 @@ export const setDataClassName = (payload) => ({
 
 export const setWhereClauses = (payload) => ({
   type: SET_WHERE_CLAUSES,
+  payload
+});
+
+export const setLimit = (payload) => ({
+  type: SET_LIMIT,
   payload
 });
