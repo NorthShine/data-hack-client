@@ -6,6 +6,7 @@ import useSelector from '../../hooks/useSelector';
 import useDispatch from '../../hooks/useDispatch';
 import { setDataClassName, setWhereClauses } from '../../store/units/config/actions';
 import styles from './DataClass.module.css';
+import ForeignKeys from './ForeignKeys/ForeignKeys';
 
 const DataClass = (props) => {
   const { id } = props;
@@ -52,6 +53,12 @@ const DataClass = (props) => {
         items={dataClass.sqlModel.fields}
         dataClassId={id}
       />
+      {models.length > 1 && (
+        <ForeignKeys
+          items={dataClass.sqlModel.foreignKeys}
+          dataClassId={id}
+        />
+      )}
       <div className={styles.container}>
         <Typography
           className={styles.title}

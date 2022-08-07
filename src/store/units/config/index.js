@@ -1,12 +1,16 @@
-import { createDataClass, createField } from '../../../utils';
+import { createForeignKey, createDataClass, createField } from '../../../utils';
 import {
   ADD_DATA_CLASS,
+  ADD_FOREIGN_KEY,
   ADD_INPUT_SET,
   REMOVE_DATA_CLASS,
+  REMOVE_FOREIGN_KEY,
   REMOVE_INPUT_SET,
   SET_DATA_CLASS_NAME,
   SET_FIELD_NAME,
   SET_FIELD_TYPE,
+  SET_FOREIGN_KEY_NAME,
+  SET_FOREIGN_KEY_FIELD,
   SET_WHERE_CLAUSES
 } from './actionTypes';
 
@@ -20,19 +24,20 @@ const configUnit = {
         return {
           ...state,
           models: [
-            ...state.data,
+            ...state.models,
             createDataClass()
           ]
         };
       case REMOVE_DATA_CLASS: {
-        const { id } = action.payload;
-        const data = state.models.filter((item) => item.id !== id);
+        const { models } = state;
+        models.pop();
 
         return {
           ...state,
-          data
+          models
         };
       }
+
       case SET_FIELD_NAME: {
         const { dataClassId, fieldId, value } = action.payload;
 
@@ -69,7 +74,7 @@ const configUnit = {
           ...state,
           models: state.models.map((dataClass) => {
             if (dataClass.id === dataClassId) {
-              const fields = dataClass.sqlModel.fields.map((field) => {
+              const foreignKeys = dataClass.sqlModel.foreignKeys.map((field) => {
                 if (field.id === fieldId) {
                   return {
                     ...field,
@@ -82,7 +87,65 @@ const configUnit = {
                 ...dataClass,
                 sqlModel: {
                   ...dataClass.sqlModel,
-                  fields
+                  foreignKeys
+                }
+              };
+            }
+            return dataClass;
+          })
+        };
+      }
+
+      case SET_FOREIGN_KEY_NAME: {
+        const { dataClassId, fieldId, value } = action.payload;
+
+        return {
+          ...state,
+          models: state.models.map((dataClass) => {
+            if (dataClass.id === dataClassId) {
+              const foreignKeys = dataClass.sqlModel.foreignKeys.map((field) => {
+                if (field.id === fieldId) {
+                  return {
+                    ...field,
+                    field: value
+                  };
+                }
+                return field;
+              });
+              return {
+                ...dataClass,
+                sqlModel: {
+                  ...dataClass.sqlModel,
+                  foreignKeys
+                }
+              };
+            }
+            return dataClass;
+          })
+        };
+      }
+
+      case SET_FOREIGN_KEY_FIELD: {
+        const { dataClassId, fieldId, value } = action.payload;
+
+        return {
+          ...state,
+          models: state.models.map((dataClass) => {
+            if (dataClass.id === dataClassId) {
+              const foreignKeys = dataClass.sqlModel.foreignKeys.map((field) => {
+                if (field.id === fieldId) {
+                  return {
+                    ...field,
+                    foreignField: value
+                  };
+                }
+                return field;
+              });
+              return {
+                ...dataClass,
+                sqlModel: {
+                  ...dataClass.sqlModel,
+                  foreignKeys
                 }
               };
             }
@@ -126,6 +189,54 @@ const configUnit = {
                 sqlModel: {
                   ...dataClass.sqlModel,
                   fields
+                }
+              };
+            }
+            return dataClass;
+          })
+        };
+      }
+
+      case ADD_FOREIGN_KEY: {
+        const { dataClassId } = action.payload;
+
+        return {
+          ...state,
+          models: state.models.map((dataClass, _, models) => {
+            if (dataClass.id === dataClassId) {
+              const [foreignModel] = models.filter((model) => model.id !== dataClassId);
+              const [foreignField] = foreignModel.sqlModel.fields;
+              const foreignKeys = [
+                ...dataClass.sqlModel.foreignKeys,
+                createForeignKey(`${foreignModel.name}.${foreignField.name}`)
+              ];
+              return {
+                ...dataClass,
+                sqlModel: {
+                  ...dataClass.sqlModel,
+                  foreignKeys
+                }
+              };
+            }
+            return dataClass;
+          })
+        };
+      }
+
+      case REMOVE_FOREIGN_KEY: {
+        const { dataClassId } = action.payload;
+
+        return {
+          ...state,
+          models: state.models.map((dataClass) => {
+            if (dataClass.id === dataClassId) {
+              const foreignKeys = [...dataClass.sqlModel.foreignKeys];
+              foreignKeys.pop();
+              return {
+                ...dataClass,
+                sqlModel: {
+                  ...dataClass.sqlModel,
+                  foreignKeys
                 }
               };
             }

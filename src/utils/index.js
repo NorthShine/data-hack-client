@@ -4,8 +4,16 @@ export * from './store';
 
 export const createField = () => (
   {
-    name: '',
+    name: 'name',
     type: 'int',
+    id: uuid()
+  }
+);
+
+export const createForeignKey = (foreignField) => (
+  {
+    field: 'name',
+    foreignField,
     id: uuid()
   }
 );

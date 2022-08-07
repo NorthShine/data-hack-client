@@ -1,39 +1,21 @@
-.fields {
-  max-width: 600px;
-  padding: 30px;
-}
-
-.title {
-  text-align: center;
-  padding-top: 10px;
-  font-size: 1.5rem;
-}
-
-
 .name {
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   font-size: 0.9rem;
 }
 
-.name2 {
-  padding-bottom: 10px;
-  font-size: 0.9rem;
-}
-
-.textField {
-  position: relative;
-
-}
-
-.gridWrapper {
+.setInput {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 1vw;
-  padding: 10px;
+  grid-gap: 2vw;
+  padding-bottom: 5px;
 }
 
 .fieldsPlace {
-  text-align: center;
-  font-size: 1rem;
+  margin-top: 15px;
   margin-bottom: 10px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
 }
