@@ -74,7 +74,7 @@ const configUnit = {
           ...state,
           models: state.models.map((dataClass) => {
             if (dataClass.id === dataClassId) {
-              const foreignKeys = dataClass.sqlModel.foreignKeys.map((field) => {
+              const fields = dataClass.sqlModel.fields.map((field) => {
                 if (field.id === fieldId) {
                   return {
                     ...field,
@@ -87,7 +87,7 @@ const configUnit = {
                 ...dataClass,
                 sqlModel: {
                   ...dataClass.sqlModel,
-                  foreignKeys
+                  fields
                 }
               };
             }
