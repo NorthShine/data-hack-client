@@ -1,4 +1,4 @@
-# Fact Checker - Web App
+# Data Hack Client
 
 ## Installation
 
