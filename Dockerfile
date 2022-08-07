@@ -6,5 +6,6 @@ COPY . /datahack_client/
 
 RUN apt-get update -y && apt-get install -y xdg-utils
 RUN npm install
+RUN chmod a+rwx docker-entrypoint.sh
 
-CMD [ "npm", "run", "dev"]
+ENTRYPOINT [ "./docker-entrypoint.sh" ]
